@@ -1,0 +1,42 @@
+name: Sync TLS Client Upstream
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-upstream:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync dependencies and client identifiers
+        run: python scripts/update_shared_libraries.py
+
+      - name: Create pull request when changes exist
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: sync tls-client upstream artifacts"
+          title: "chore: sync tls-client upstream artifacts"
+          body: |
+            Automated sync from `bogdanfinn/tls-client`:
+            - updates shared libraries in `tls_client/dependencies`
+            - updates `tls_client/settings.py` client identifiers from `profiles/profiles.go`
+          branch: chore/sync-tls-client-upstream
+          delete-branch: true
+          labels: |
+            dependencies
+            automated
