@@ -1,15 +1,20 @@
-# Python-TLS-Client
+# Python-TLS-Client (Fork) 🚀
+
 Python-TLS-Client is an advanced HTTP library based on requests and tls-client.
+This repository is a maintained fork with upstream sync automation.
 
-# Installation
+# Installation 📦
+
 ```
-pip install tls-client
+pip install "git+https://github.com/AxelCipher20/better-tls-client.git"
 ```
 
-# Examples
+# Examples 🧪
+
 The syntax is inspired by [requests](https://github.com/psf/requests), so its very similar and there are only very few things that are different.
 
 Example 1 - Preset:
+
 ```python
 import tls_client
 
@@ -41,6 +46,7 @@ res = session.get(
 ```
 
 Example 2 - Custom:
+
 ```python
 import tls_client
 
@@ -97,34 +103,42 @@ res = session.post(
 )
 ```
 
-# Pyinstaller / Pyarmor
+# Pyinstaller / Pyarmor 🛠️
+
 **If you want to pack the library with Pyinstaller or Pyarmor, make sure to add this to your command:**
 
 Linux - Ubuntu / x86:
+
 ```
 --add-binary '{path_to_library}/tls_client/dependencies/tls-client-x86.so:tls_client/dependencies'
 ```
 
 Linux Alpine / AMD64:
+
 ```
 --add-binary '{path_to_library}/tls_client/dependencies/tls-client-amd64.so:tls_client/dependencies'
 ```
 
 MacOS M1 and older:
+
 ```
 --add-binary '{path_to_library}/tls_client/dependencies/tls-client-x86.dylib:tls_client/dependencies'
 ```
 
 MacOS M2:
+
 ```
 --add-binary '{path_to_library}/tls_client/dependencies/tls-client-arm64.dylib:tls_client/dependencies'
 ```
 
 Windows:
+
 ```
 --add-binary '{path_to_library}/tls_client/dependencies/tls-client-64.dll;tls_client/dependencies'
 ```
 
-# Acknowledgements
+# Acknowledgements 🙏
+
+Thanks to [FlorianREGAZ](https://github.com/FlorianREGAZ) for the original Python wrapper: [Python-Tls-Client](https://github.com/FlorianREGAZ/Python-Tls-Client).
 Big shout out to [Bogdanfinn](https://github.com/bogdanfinn) for open sourcing his [tls-client](https://github.com/bogdanfinn/tls-client) in Golang.
 Also I wanted to keep the syntax as similar as possible to [requests](https://github.com/psf/requests), as most people use it and are familiar with it!
